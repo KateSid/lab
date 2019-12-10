@@ -1,0 +1,17 @@
+
+  <form>
+<fieldset>
+  <legend>Параметры</legend>
+  <p>Длина<input type="number" class="form-control" name="height" min="7" max="31" step="2" [(ngModel)]="labyrinth.height"/></p>
+  <p>Ширина<input type="number" class="form-control" name="width" min="7" max="31" step="2" [(ngModel)]="labyrinth.width"/></p>
+  <p>
+    <select class="form-control" name="theme" [(ngModel)]="labyrinth.theme">
+      <option value="1">Огонь</option>
+      <option value="2">Вода</option>
+      <option value="3">Земля</option>
+      <option value="4">Воздух</option>
+    </select>
+  </p>
+  <p><button (click)="generate(labyrinth)">Принять</button></p>
+</fieldset>
+  </form>

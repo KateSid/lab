@@ -1,0 +1,19 @@
+<form>
+  <fieldset>
+    <legend>Создание лабиринта</legend>
+    <div>
+      <p><input name="radiobutton" type="radio" value="hand" [(ngModel)]="url">Ручное</p>
+      <p>Автоматическое</p>
+      <p><input name="radiobutton" type="radio" value="molegenerate" [(ngModel)]="url">Алгоритм Крота</p>
+      <p><input name="radiobutton" type="radio" value="backgenerate" [(ngModel)]="url">Алгоритм Бектрекинг</p>
+      <p>
+        <button (click)="findWay()">Принять</button>
+      </p>
+    </div>
+  </fieldset>
+</form>
+  <div *ngFor="let row of labyrinth.pattern">
+    <span *ngFor="let x of row" ><img src="../../assets/green.jpg" width="20" height="20" /></span>
+  </div>
+
+

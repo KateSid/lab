@@ -1,0 +1,21 @@
+<form>
+  <fieldset>
+    <legend>Поиск пути</legend>
+    <div>
+      <p>Алгоритм:</p>
+      <p><input name="radiobutton" type="radio" value="wave">Волновой</p>
+      <p>Автоматическое</p>
+      <p><input name="radiobutton" type="radio" value="rigth_hand">"Правой руки"</p>
+      <p>Скорость прохождения</p>
+      <form onsubmit="return false" oninput="level.value = flevel.valueAsNumber">
+      <input name="flevel" id="flying" type="range" min="1" max="4" step="1" value="1">
+        <output for="flying" name="level">1</output>
+      </form>
+      <p><button>Принять</button></p>
+      <!--
+
+     <p><button (click)="findWay()">Принять</button></p>
+-->
+    </div>
+  </fieldset>
+</form>
