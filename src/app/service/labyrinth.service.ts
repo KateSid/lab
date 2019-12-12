@@ -10,6 +10,8 @@ export class LabyrinthService {
   private isDraw: boolean;
   public eventEndDrawWay: EventEmitter<boolean> = new EventEmitter<boolean>();
   speed = 1;
+  currentComponent = 1;
+  isManualEdit = false;
 
   constructor(@Inject(HttpService) private httpService: HttpService) {
     this.labyrinth = new Labyrinth();
@@ -88,4 +90,9 @@ export class LabyrinthService {
   }
 
 
+  setComponent(row: number, x: number) {
+    if (this.isManualEdit) {
+      this.labyrinth.pattern[row][x] = this.currentComponent;
+    }
+  }
 }

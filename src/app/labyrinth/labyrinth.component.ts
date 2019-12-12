@@ -14,4 +14,7 @@ export class LabyrinthComponent implements OnInit {
   ngOnInit() {
   }
 
+  setComponent(row: number, x: number) {
+    this.labyrinthService.setComponent(row, x);
+  }
 }
