@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+form {
+  width: 200px;
+  border-style: double;
+  margin:20px;
+}
+
+fieldset{
+  margin: 20px;
+}

@@ -1,5 +1,8 @@
-<div style="position: absolute;left: 30%">
-  <form class="form1">
+<div style="position: absolute;left: 400px;
+    top: 10px;">
+  <form style="width: 1000px;margin: 20px;">
+    <div style="margin: 10px;">
+    <legend>Лабиринт</legend>
     <div *ngFor="let row of this.labyrinthService.labyrinth.pattern" style="margin: -4px">
     <span *ngFor="let x of row" [ngSwitch]="x">
                  <ng-template ngSwitchCase="0"><img src="../../assets/gray.jpg" width="23" height="23"/></ng-template>
@@ -9,6 +12,7 @@
                   <ng-template ngSwitchCase="5"><img src="../../assets/pink.jpg" width="23" height="23"/></ng-template>
                   <ng-template ngSwitchDefault></ng-template>
     </span>
+    </div>
     </div>
   </form>
 </div>

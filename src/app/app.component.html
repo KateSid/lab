@@ -3,12 +3,12 @@
     <title>be1.ru</title>
   </head>
   <body>
-  <div>
-    <button (click)="init()">Новый лабиринт</button>
+  <div style="left: 1%;top:20px; position: relative;">
+    <p><button class="btn btn-outline-primary" (click)="init()">Новый лабиринт</button></p>
 
-  <p><input name="loadLab" type="button" value="Загрузить лабиринт" /></p>
+  <p><input class="btn btn-outline-primary" name="loadLab" type="button" value="Загрузить лабиринт" /></p>
 
-  <p><input name="saveLab" type="button" value="Сохранить лабиринт" /></p>
+  <p><input class="btn btn-outline-primary" name="saveLab" type="button" value="Сохранить лабиринт" /></p>
     <app-labyrinth></app-labyrinth>
   <router-outlet></router-outlet>
 
