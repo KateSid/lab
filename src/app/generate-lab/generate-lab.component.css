@@ -5,5 +5,11 @@ img {
   margin-bottom: -6px;
   padding: 0px;
 }
+form.form1 {
+  width: 1000px;
+  height: 1000px;
+   margin-left: 300px;
+  margin-top: -380px;
+}
 
 

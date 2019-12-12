@@ -1,5 +1,7 @@
 import { Cell } from './Cell';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Labyrinth {
   width: number;
   height: number;
@@ -8,3 +10,4 @@ export class Labyrinth {
   start: Cell;
   stop: Cell;
 }
+

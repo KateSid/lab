@@ -8,14 +8,14 @@ import { GenerateLabComponent } from './generate-lab/generate-lab.component';
 import { FindWayComponent } from './find-way/find-way.component';
 import {FormsModule} from '@angular/forms';
 import { LoadComponent } from './load/load.component';
+import {Labyrinth} from './labyrinth';
 
 // определение маршрутов
-const appRoutes: Routes =[
+const appRoutes: Routes = [
   { path: 'find', component: FindWayComponent},
   { path: 'generate', component: GenerateLabComponent},
   { path: 'init', component: InitLabComponent }
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,8 @@ const appRoutes: Routes =[
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, FormsModule
   ],
-  providers: [],
+  providers: [Labyrinth],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+

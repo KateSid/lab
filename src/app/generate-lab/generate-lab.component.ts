@@ -9,19 +9,22 @@ import {Labyrinth} from '../labyrinth';
   styleUrls: ['./generate-lab.component.css'],
   providers: [HttpService]
 })
+
 export class GenerateLabComponent implements OnInit {
   url: string;
-  labyrinth: Labyrinth;
-  constructor(private router: Router, private  httpService: HttpService) {}
-  debugger;
+  constructor(private router: Router, private  httpService: HttpService, public labyrinth: Labyrinth) {
+  }
   findWay() {
 
     this.httpService.getData(this.url).subscribe((data: Labyrinth) => {
       this.labyrinth = data;
     });
-   // this.router.navigate(['find']);
+    this.router.navigate(['find']);
   }
   ngOnInit() {
+    this.httpService.getLab().subscribe((data: Labyrinth) => {
+      this.labyrinth = data;
+    });
   }
 
 }

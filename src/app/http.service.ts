@@ -13,4 +13,10 @@ export class HttpService {
   getData(url: string) {
     return this.http.get('http://localhost:8080/' + url);
   }
+  getWay(url: string) {
+    return this.http.get('http://localhost:8080/' + url);
+  }
+  getLab() {
+    return this.http.get('http://localhost:8080/getlab');
+  }
 }

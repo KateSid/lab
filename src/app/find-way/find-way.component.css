@@ -1,3 +1,13 @@
 form {
   width: 250px;
 }
+img {
+  margin-bottom: -6px;
+  padding: 0px;
+}
+form.form1 {
+  width: 1200px;
+  height: 1200px;
+  margin-left: 300px;
+  margin-top: -440px;
+}
