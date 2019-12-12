@@ -12,13 +12,13 @@ import {LabyrinthService} from '../service/labyrinth.service';
 })
 
 export class GenerateLabComponent implements OnInit {
-  url = 'molegenerate';
+
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
 
   async createLabyrinth() {
-    await this.labyrinthService.getLabyrinthStruct(this.url);
+    await this.labyrinthService.getLabyrinthStruct();
 
     this.router.navigate(['find']);
   }

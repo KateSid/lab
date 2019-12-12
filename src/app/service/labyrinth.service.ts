@@ -11,7 +11,7 @@ export class LabyrinthService {
   public eventEndDrawWay: EventEmitter<boolean> = new EventEmitter<boolean>();
   speed = 1;
   currentComponent = 1;
-  isManualEdit = false;
+  urlGenerateLabyrinth = 'molegenerate';
 
   constructor(@Inject(HttpService) private httpService: HttpService) {
     this.labyrinth = new Labyrinth();
@@ -31,8 +31,8 @@ export class LabyrinthService {
       });
   }
 
-  async getLabyrinthStruct(url: string) {
-    this.httpService.getData(url).subscribe((data: Labyrinth) => {
+  async getLabyrinthStruct() {
+    this.httpService.getData(this.urlGenerateLabyrinth).subscribe((data: Labyrinth) => {
       this.labyrinth.start = data.start;
       this.labyrinth.stop = data.stop;
 
@@ -91,7 +91,7 @@ export class LabyrinthService {
 
 
   setComponent(row: number, x: number) {
-    if (this.isManualEdit) {
+    if (this.urlGenerateLabyrinth === "hand") {
       this.labyrinth.pattern[row][x] = this.currentComponent;
     }
   }

@@ -2,16 +2,19 @@
   <fieldset>
     <legend>Создание лабиринта</legend>
     <div>
-      <p><input #radioManual (click)="this.labyrinthService.isManualEdit=true;" checked name="radiobutton" type="radio"
-                [checked]="this.labyrinthService.isManualEdit" value="hand" [(ngModel)]="url">Ручное</p>
+      <p><input #radioManual checked name="radiobutton" type="radio"
+                value="hand"
+
+                [(ngModel)]="this.labyrinthService.urlGenerateLabyrinth">Ручное</p>
 
       <div [hidden]="!radioManual.checked">
         <form style="border-style: dot-dash; margin: 0px; width: auto">
           <fieldset style="margin: 10px">
             <label>Компоненты</label>
-            <p><input name="radiobutton" type="radio" value=1 checked
+            <p><input id="Wall" name="radiobutton" type="radio"  value=1
                       [(ngModel)]="this.labyrinthService.currentComponent">Стена</p>
-            <p><input name="radiobutton" type="radio" value=0 [(ngModel)]="this.labyrinthService.currentComponent">Проход
+            <p><input #Pass name="radiobutton" type="radio" value=0
+                      [(ngModel)]="this.labyrinthService.currentComponent">Проход
             </p>
           </fieldset>
         </form>
@@ -19,8 +22,10 @@
       </div>
 
       <p>Автоматическое</p>
-      <p><input name="radiobutton" type="radio" value="molegenerate" checked [(ngModel)]="url">Алгоритм Крота</p>
-      <p><input name="radiobutton" type="radio" value="backgenerate" [(ngModel)]="url">Алгоритм Бектрекинг</p>
+      <p><input name="radiobutton" type="radio" value="molegenerate" checked
+                [(ngModel)]="this.labyrinthService.urlGenerateLabyrinth">Алгоритм Крота</p>
+      <p><input name="radiobutton" type="radio" value="backgenerate"
+                [(ngModel)]="this.labyrinthService.urlGenerateLabyrinth">Алгоритм Бектрекинг</p>
       <p>
         <button class="btn btn-outline-primary" (click)="createLabyrinth()">Принять</button>
       </p>
