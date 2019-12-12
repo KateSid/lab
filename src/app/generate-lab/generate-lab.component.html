@@ -4,25 +4,15 @@
     <div>
       <p><input name="radiobutton" type="radio" value="hand" [(ngModel)]="url">Ручное</p>
       <p>Автоматическое</p>
-      <p><input name="radiobutton" type="radio" value="molegenerate" [(ngModel)]="url">Алгоритм Крота</p>
+      <p><input name="radiobutton" type="radio" value="molegenerate"  checked [(ngModel)]="url">Алгоритм Крота</p>
       <p><input name="radiobutton" type="radio" value="backgenerate" [(ngModel)]="url">Алгоритм Бектрекинг</p>
       <p>
-        <button (click)="findWay()">Принять</button>
+        <button (click)="createLabyrinth()">Принять</button>
       </p>
     </div>
   </fieldset>
 </form>
-<form class="form1">
-  <div *ngFor="let row of labyrinth.pattern">
-    <span *ngFor="let x of row" [ngSwitch]="x" >
-                  <ng-template ngSwitchCase="0"><img src="../../assets/gray.jpg" width="23" height="23" /></ng-template>
-                  <ng-template ngSwitchCase="1"><img src="../../assets/green.jpg" width="23" height="23" /></ng-template>
-                  <ng-template ngSwitchCase="3"><img src="../../assets/red.jpg" width="23" height="23" /></ng-template>
-                  <ng-template ngSwitchCase="4"><img src="../../assets/black.jpg" width="23" height="23" /></ng-template>
-                  <ng-template ngSwitchDefault></ng-template>
-    </span>
-  </div>
-</form>
+
 
 
 

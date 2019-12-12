@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpService} from '../http.service';
-import {Labyrinth} from '../labyrinth';
+import {HttpService} from '../service/http.service';
+import {Labyrinth} from '../model/labyrinth';
+import {LabyrinthService} from '../service/labyrinth.service';
 
 @Component({
   selector: 'app-generate-lab',
@@ -11,20 +12,20 @@ import {Labyrinth} from '../labyrinth';
 })
 
 export class GenerateLabComponent implements OnInit {
-  url: string;
-  constructor(private router: Router, private  httpService: HttpService, public labyrinth: Labyrinth) {
-  }
-  findWay() {
+  url = 'molegenerate';
 
-    this.httpService.getData(this.url).subscribe((data: Labyrinth) => {
-      this.labyrinth = data;
-    });
+  constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
+  }
+
+  async createLabyrinth() {
+    await this.labyrinthService.getLabyrinthStruct(this.url);
+
     this.router.navigate(['find']);
   }
+
   ngOnInit() {
-    this.httpService.getLab().subscribe((data: Labyrinth) => {
-      this.labyrinth = data;
-    });
+    this.labyrinthService.getLabyrinthPattern();
+
   }
 
 }
