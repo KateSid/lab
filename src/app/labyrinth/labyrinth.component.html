@@ -2,7 +2,6 @@
     top: 10px;">
   <form style="width: 1000px;margin: 20px;">
     <div style="margin: 10px;">
-      <legend>Лабиринт</legend>
       <div *ngFor="let row of this.labyrinthService.labyrinth.pattern; index as i;" style="margin: -4px">
     <span *ngFor="let x of row;index as j" [ngSwitch]="x">
                  <ng-template ngSwitchCase="0"><img (click)="setComponent(i,j)" src="../../assets/gray.jpg"
