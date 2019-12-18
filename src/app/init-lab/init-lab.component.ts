@@ -23,6 +23,9 @@ export class InitLabComponent implements OnInit {
   }
 
   setParameter() {
+    if (this.labyrinthService.labyrinth.width % 2 == 0) {
+
+    }
     this.labyrinthService.setParameterLabyrinth();
     this.router.navigate(['generate']);
   }

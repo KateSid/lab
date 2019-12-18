@@ -23,7 +23,7 @@ export class GenerateLabComponent implements OnInit {
   async createLabyrinth() {
     if (this.url == 'hand') {
       const error = this.labyrinthService.ExcelentStruct(this.labyrinthService.isManualEdit);
-      if (error.length === 0) {
+      if (error.length !== 0) {
         alert("Ошибка структуры");
         console.log(error);
         return;
