@@ -10,14 +10,17 @@ import {FormsModule} from '@angular/forms';
 import {LoadComponent} from './load/load.component';
 import {Labyrinth} from './model/labyrinth';
 import {LabyrinthService} from './service/labyrinth.service';
-import {HttpService} from "./service/http.service";
-import { LabyrinthComponent } from './labyrinth/labyrinth.component';
+import {HttpService} from './service/http.service';
+import { LabyrinthComponent } from './labyrinth/labyrinth.component'
+import {SaveComponent} from './save/save.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
   {path: 'find', component: FindWayComponent},
   {path: 'generate', component: GenerateLabComponent},
-  {path: 'init', component: InitLabComponent}
+  {path: 'init', component: InitLabComponent},
+  {path: 'load', component: LoadComponent},
+  {path: 'save', component: SaveComponent}
 ];
 
 @NgModule({
@@ -27,7 +30,8 @@ const appRoutes: Routes = [
     GenerateLabComponent,
     FindWayComponent,
     LoadComponent,
-    LabyrinthComponent
+    LabyrinthComponent,
+    SaveComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, FormsModule

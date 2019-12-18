@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
+import {LabyrinthService} from './service/labyrinth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
   init() {
     this.router.navigate(['init']);
   }
-
+  loadLab() {
+    this.router.navigate(['load']);
+  }
+  saveLab() {
+    this.router.navigate(['save']);
+  }
 }

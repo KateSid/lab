@@ -19,6 +19,7 @@ export class InitLabComponent implements OnInit {
 
 
   ngOnInit() {
+    this.labyrinthService.saveready = false;
   }
 
   setParameter() {

@@ -25,4 +25,13 @@ export class HttpService {
   getLab() {
     return this.http.get(this.urlServer + 'getlab');
   }
+  saveLab(name: string) {
+    return this.http.get(this.urlServer + 'save?name=' + name);
+  }
+  loadListLabyrinth() {
+    return this.http.get(this.urlServer + 'load');
+  }
+  loadLabyrinth(name: string) {
+    return this.http.get(this.urlServer + 'load/' + name);
+  }
 }

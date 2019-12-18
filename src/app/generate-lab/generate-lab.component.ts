@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpService} from '../service/http.service';
-import {Labyrinth} from '../model/labyrinth';
 import {LabyrinthService} from '../service/labyrinth.service';
 
 @Component({
@@ -12,13 +11,17 @@ import {LabyrinthService} from '../service/labyrinth.service';
 })
 
 export class GenerateLabComponent implements OnInit {
-
+  url = 'molegenerate';
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
 
   async createLabyrinth() {
-    await this.labyrinthService.getLabyrinthStruct();
+    if (this.url == 'hand') {
+      const c = true;
+      this.labyrinthService.ExcelentStruct(c);
+    }
+   // await this.labyrinthService.getLabyrinthStruct(this.url);
 
     this.router.navigate(['find']);
   }
