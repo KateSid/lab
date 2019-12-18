@@ -20,8 +20,7 @@ export class GenerateLabComponent implements OnInit {
  }
   async createLabyrinth() {
     if (this.url == 'hand') {
-      const c = true;
-      this.labyrinthService.ExcelentStruct(c);
+      this.labyrinthService.ExcelentStruct(this.labyrinthService.isManualEdit);
     }
     await this.labyrinthService.getLabyrinthStruct(this.url);
 

@@ -9,5 +9,6 @@ export class Labyrinth {
   theme = 0;
   start: Cell;
   stop: Cell;
+  hero: Cell;
 }
 

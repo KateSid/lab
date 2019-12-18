@@ -20,6 +20,7 @@ export class LabyrinthService {
     this.labyrinth.height = 31;
     this.labyrinth.width = 31;
     this.labyrinth.theme = 1;
+    this.labyrinth.hero = new Cell();
     this.saveready = false;
   }
 
@@ -33,7 +34,21 @@ export class LabyrinthService {
         console.log('Error occured');
       });
   }
-
+  public setHero() {
+    if (this.labyrinth.start.y == 0) {
+      this.labyrinth.hero.x = (this.labyrinth.start.x + 1);
+      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
+    } else if (this.labyrinth.start.y == (this.labyrinth.height - 1)) {
+      this.labyrinth.hero.x = (this.labyrinth.start.x - 1);
+      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
+    } else if (this.labyrinth.start.x == 0) {
+      this.labyrinth.hero.y = (this.labyrinth.start.y + 1);
+      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
+    } else if (this.labyrinth.start.x == this.labyrinth.height - 1) {
+      this.labyrinth.hero.y = (this.labyrinth.start.y - 1);
+      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
+    }
+  }
   async getLabyrinthStruct(url: string) {
     this.httpService.getData(url).subscribe((data: Labyrinth) => {
       this.labyrinth.start = data.start;
@@ -148,9 +163,9 @@ export class LabyrinthService {
         }
       }
     }
-      if ((this.labyrinth.start.x >= this.labyrinth.width) || (this.labyrinth.start.x < 0) || (this.labyrinth.start.y >= this.labyrinth.height) || (this.labyrinth.start.y < 0) || (this.labyrinth.start.x == 0 && this.labyrinth.start.y == 0)
+    if ((this.labyrinth.start.x >= this.labyrinth.width) || (this.labyrinth.start.x < 0) || (this.labyrinth.start.y >= this.labyrinth.height) || (this.labyrinth.start.y < 0) || (this.labyrinth.start.x == 0 && this.labyrinth.start.y == 0)
         || (this.labyrinth.start.x == 0 && this.labyrinth.start.y == this.labyrinth.height - 1) || (this.labyrinth.start.x == this.labyrinth.width - 1 && this.labyrinth.start.y == this.labyrinth.height - 1)
-        || (this.labyrinth.start.x == this.labyrinth.width - 1 && this.labyrinth.start.y == 0)){
+        || (this.labyrinth.start.x == this.labyrinth.width - 1 && this.labyrinth.start.y == 0)) {
         b = false;
       }
     if ((this.labyrinth.stop.x >= this.labyrinth.width) || (this.labyrinth.stop.x < 0) || (this.labyrinth.stop.y >= this.labyrinth.height) || (this.labyrinth.stop.y < 0) || (this.labyrinth.stop.x == 0 && this.labyrinth.stop.y == 0)
@@ -172,7 +187,7 @@ export class LabyrinthService {
         }
       }
     }
-    //FindCycle(errorListPoints);
+    // FindCycle(errorListPoints);
 
   }
 }
