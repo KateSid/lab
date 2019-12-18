@@ -9,6 +9,7 @@
   <p><input class="btn btn-outline-primary" name="loadLab" type="button" value="Загрузить лабиринт" (click)="loadLab()"/></p>
 
   <p><input class="btn btn-outline-primary" name="saveLab" type="button" value="Сохранить лабиринт" (click)="saveLab()" [hidden]="!this.labyrinthService.saveready"/></p>
+    <p><button class="btn btn-outline-primary" (click)="init()">Справка</button></p>
     <app-labyrinth></app-labyrinth>
   <router-outlet></router-outlet>
 

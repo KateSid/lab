@@ -17,7 +17,7 @@ export class SaveComponent implements OnInit {
     this.saveCompplete = false;
   }
   saveSend() {
-    if (name !== '') {
+    if (this.name !== '') {
       this.labyrinthService.sendLabirynth(this.name);
       this.saveCompplete = true;
     }

@@ -15,13 +15,15 @@ export class GenerateLabComponent implements OnInit {
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
-
+ falseManual() {
+    this.labyrinthService.isManualEdit = false;
+ }
   async createLabyrinth() {
     if (this.url == 'hand') {
       const c = true;
       this.labyrinthService.ExcelentStruct(c);
     }
-   // await this.labyrinthService.getLabyrinthStruct(this.url);
+    await this.labyrinthService.getLabyrinthStruct(this.url);
 
     this.router.navigate(['find']);
   }
