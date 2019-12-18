@@ -2,12 +2,13 @@ import {EventEmitter, Inject, Injectable} from '@angular/core';
 import {Labyrinth} from '../model/labyrinth';
 import {HttpService} from './http.service';
 import {Cell} from '../model/Cell';
+import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Injectable()
 export class LabyrinthService {
   public labyrinth: Labyrinth;
   private cellsWay: Cell[];
-  private errorCells: Cell[];
+  private errorCells: Cell[] = [];
   public saveready: boolean;
   private isDraw: boolean;
   public eventEndDrawWay: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -15,6 +16,7 @@ export class LabyrinthService {
   currentComponent = 1;
   isManualEdit = false;
   public labFilse: string[];
+
   constructor(@Inject(HttpService) private httpService: HttpService) {
     this.labyrinth = new Labyrinth();
     this.labyrinth.height = 31;
@@ -34,21 +36,7 @@ export class LabyrinthService {
         console.log('Error occured');
       });
   }
-  public setHero() {
-    if (this.labyrinth.start.y == 0) {
-      this.labyrinth.hero.x = (this.labyrinth.start.x + 1);
-      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
-    } else if (this.labyrinth.start.y == (this.labyrinth.height - 1)) {
-      this.labyrinth.hero.x = (this.labyrinth.start.x - 1);
-      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
-    } else if (this.labyrinth.start.x == 0) {
-      this.labyrinth.hero.y = (this.labyrinth.start.y + 1);
-      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
-    } else if (this.labyrinth.start.x == this.labyrinth.height - 1) {
-      this.labyrinth.hero.y = (this.labyrinth.start.y - 1);
-      this.labyrinth.pattern[this.labyrinth.hero.x][this.labyrinth.hero.y] = 6;
-    }
-  }
+
   async getLabyrinthStruct(url: string) {
     this.httpService.getData(url).subscribe((data: Labyrinth) => {
       this.labyrinth.start = data.start;
@@ -64,7 +52,13 @@ export class LabyrinthService {
 
   public getLabyrinthPattern() {
     this.httpService.getLab().subscribe((data: Labyrinth) => {
-      this.labyrinth = data;
+      this.labyrinth.start = data.start;
+      this.labyrinth.stop = data.stop;
+      this.labyrinth.pattern = data.pattern;
+      this.labyrinth.width = data.width;
+      this.labyrinth.height = data.height;
+      this.labyrinth.theme = data.theme;
+      this.labyrinth.hero = data.hero;
     });
   }
 
@@ -89,9 +83,20 @@ export class LabyrinthService {
   }
 
   private async setWay() {
-    for (const el of this.cellsWay) {
+    for (let i = 0; i < this.cellsWay.length; i++) {
+      const el = this.cellsWay[i];
       if (this.isDraw) {
-        await this.setimg(el.x, el.y, 5);
+        if (i !== 0) {
+          const prewElement = this.cellsWay[i - 1];
+
+          if (this.labyrinth.pattern[el.y][el.x] === MazeComponent.Way) {
+            this.setimg(prewElement.x, prewElement.y, MazeComponent.Pass);
+          } else {
+            this.setimg(prewElement.x, prewElement.y, MazeComponent.Way);
+          }
+        }
+
+        await this.setimg(el.x, el.y, MazeComponent.Personage);
       }
     }
     this.isDraw = false;
@@ -109,30 +114,62 @@ export class LabyrinthService {
 
   public setComponent(row: number, x: number) {
     if (this.isManualEdit) {
-      if (this.currentComponent == 3) {
-        this.labyrinth.start.x = row;
-        this.labyrinth.start.y = x;
+      switch (Number(this.currentComponent) as MazeComponent) {
+        case MazeComponent.Entry:
+          if (this.checkDiagonal(row, x)) {
+            const entry = this.labyrinth.start;
+            this.setimg(entry.x, entry.y, MazeComponent.Wall);
+
+            this.labyrinth.setStartPosition(row, x);
+            this.setimg(x, row, MazeComponent.Entry);
+          }
+
+          break;
+
+        case MazeComponent.Exit:
+          if (this.checkDiagonal(row, x)) {
+            const exit = this.labyrinth.stop;
+            this.setimg(exit.x, exit.y, MazeComponent.Wall);
+
+            this.labyrinth.setStopPosition(row, x);
+            this.setimg(x, row, MazeComponent.Exit);
+          }
+          break;
+
+        case MazeComponent.Pass:
+        case MazeComponent.Wall:
+          if (row !== 0 && row !== this.labyrinth.width
+            && x !== 0 && x !== this.labyrinth.height) {
+            this.labyrinth.pattern[row][x] = this.currentComponent;
+          }
+
+          break;
+
+        default:
+
+          break;
+
       }
-      if (this.currentComponent == 4) {
-        this.labyrinth.stop.x = row;
-        this.labyrinth.stop.y = x;
-      }
-      this.labyrinth.pattern[row][x] = this.currentComponent;
+
     }
   }
+
   public sendLabirynth(name: string) {
     this.httpService.saveLab(name).subscribe();
   }
+
   public loadLabirynths() {
     this.httpService.loadListLabyrinth().subscribe((data: string[]) => {
       this.labFilse = data;
     });
   }
+
   public loadLabyrinth(name: string) {
     this.httpService.loadLabyrinth(name).subscribe((data: string) => {
       name = data;
     });
   }
+
   public CheckElementSet(i: number, j: number) {
     return (this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j] // правый нижний квадрат
       && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j + 1]
@@ -150,44 +187,42 @@ export class LabyrinthService {
         && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j - 1]
         && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j - 1]);
   }
+
   public ExcelentStruct(c: boolean) {
-    let n: number;
-    let b: boolean;
-    b = true;
-    for (let i = 1; i < this.labyrinth.height - 1; i++) {
-      for (let j = 1; j < this.labyrinth.width - 1; j++) {
-        if (this.currentComponent) {
-          this.errorCells[n].x = i; // добавляем элемент
-          this.errorCells[n].y = j; // добавляем элемент
-          n++;
-        }
-      }
-    }
-    if ((this.labyrinth.start.x >= this.labyrinth.width) || (this.labyrinth.start.x < 0) || (this.labyrinth.start.y >= this.labyrinth.height) || (this.labyrinth.start.y < 0) || (this.labyrinth.start.x == 0 && this.labyrinth.start.y == 0)
-        || (this.labyrinth.start.x == 0 && this.labyrinth.start.y == this.labyrinth.height - 1) || (this.labyrinth.start.x == this.labyrinth.width - 1 && this.labyrinth.start.y == this.labyrinth.height - 1)
-        || (this.labyrinth.start.x == this.labyrinth.width - 1 && this.labyrinth.start.y == 0)) {
-        b = false;
-      }
-    if ((this.labyrinth.stop.x >= this.labyrinth.width) || (this.labyrinth.stop.x < 0) || (this.labyrinth.stop.y >= this.labyrinth.height) || (this.labyrinth.stop.y < 0) || (this.labyrinth.stop.x == 0 && this.labyrinth.stop.y == 0)
-        || (this.labyrinth.stop.x == 0 && this.labyrinth.stop.y == this.labyrinth.height - 1) || (this.labyrinth.stop.x == this.labyrinth.width - 1 && this.labyrinth.stop.y == this.labyrinth.height - 1)
-        || (this.labyrinth.stop.x == this.labyrinth.width - 1 && this.labyrinth.stop.y == 0)) {
-        b = false;
-      }
-    console.log(b);
-    if ((this.labyrinth.stop.y == this.labyrinth.start.y) && (this.labyrinth.stop.x == this.labyrinth.start.x)) {
-      b = false;
-      }
-    console.log(b);
     for (let i = 1; i < this.labyrinth.height - 1; i++) {
       for (let j = 1; j < this.labyrinth.width - 1; j++) {
         if (this.CheckElementSet(i, j)) {
-          this.errorCells[n].x = i; // добавляем элемент
-          this.errorCells[n].y = j; // добавляем элемент
-          n++;
+          this.errorCells.push(new Cell(j, i));
         }
       }
     }
     // FindCycle(errorListPoints);
 
+    return this.errorCells;
   }
+
+  private checkDiagonal = (y: number, x: number) => {
+    return (x === 0 || x === this.labyrinth.width - 1
+      || y === 0 || y === this.labyrinth.height - 1)
+      && !((x === 0 && y === 0)
+        || (x === 0 && y === this.labyrinth.height - 1)
+        || (x === this.labyrinth.width - 1 && y === 0)
+        || (x === this.labyrinth.width - 1 && y === this.labyrinth.height - 1))
+      && (((x === 0 || x === this.labyrinth.width - 1) && y % 2 === 1)
+        || ((y === 0 || y === this.labyrinth.height - 1) && x % 2 === 1))
+      && !(x === this.labyrinth.start.x && y === this.labyrinth.start.y)
+      && !(x === this.labyrinth.stop.x && y === this.labyrinth.stop.y);
+
+
+  }
+}
+
+
+export enum MazeComponent {
+  Pass = 0,
+  Wall = 1,
+  Entry = 3,
+  Exit = 4,
+  Way = 5,
+  Personage = 6
 }

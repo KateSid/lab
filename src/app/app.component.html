@@ -1,17 +1,35 @@
+<head>
+  <title>be1.ru</title>
+</head>
+<body>
 
-  <head>
-    <title>be1.ru</title>
-  </head>
-  <body>
-  <div style="left: 1%;top:20px; position: relative;">
-    <p><button class="btn btn-outline-primary" (click)="init()">Новый лабиринт</button></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Лабиринт</a>
 
-  <p><input class="btn btn-outline-primary" name="loadLab" type="button" value="Загрузить лабиринт" (click)="loadLab()"/></p>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="init()">Новый лабиринт</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="loadLab()">Загрузить Лабиринт</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="saveLab()" [hidden]="!this.labyrinthService.saveready">Сохранить лабиринт</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="init()">Справка</a>
+      </li>
 
-  <p><input class="btn btn-outline-primary" name="saveLab" type="button" value="Сохранить лабиринт" (click)="saveLab()" [hidden]="!this.labyrinthService.saveready"/></p>
-    <p><button class="btn btn-outline-primary" (click)="init()">Справка</button></p>
-    <app-labyrinth></app-labyrinth>
+    </ul>
+  </div>
+</nav>
+
+<div style="left: 1%;top:20px; position: relative;">
+
+
+  <app-labyrinth></app-labyrinth>
   <router-outlet></router-outlet>
 
 </div>
-  </body>
+</body>

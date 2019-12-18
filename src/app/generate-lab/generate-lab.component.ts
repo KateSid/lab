@@ -15,16 +15,25 @@ export class GenerateLabComponent implements OnInit {
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
- falseManual() {
+
+  falseManual() {
     this.labyrinthService.isManualEdit = false;
- }
+  }
+
   async createLabyrinth() {
     if (this.url == 'hand') {
-      this.labyrinthService.ExcelentStruct(this.labyrinthService.isManualEdit);
+      const error = this.labyrinthService.ExcelentStruct(this.labyrinthService.isManualEdit);
+      if (error.length === 0) {
+        alert("Ошибка структуры");
+        console.log(error);
+        return;
+      }
     }
+
     await this.labyrinthService.getLabyrinthStruct(this.url);
 
     this.router.navigate(['find']);
+
   }
 
   ngOnInit() {

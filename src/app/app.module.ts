@@ -7,12 +7,12 @@ import {InitLabComponent} from './init-lab/init-lab.component';
 import {GenerateLabComponent} from './generate-lab/generate-lab.component';
 import {FindWayComponent} from './find-way/find-way.component';
 import {FormsModule} from '@angular/forms';
-import {LoadComponent} from './load/load.component';
+import {LoadComponent} from './modals-form/load/load.component';
 import {Labyrinth} from './model/labyrinth';
 import {LabyrinthService} from './service/labyrinth.service';
 import {HttpService} from './service/http.service';
 import { LabyrinthComponent } from './labyrinth/labyrinth.component'
-import {SaveComponent} from './save/save.component';
+import {SaveComponent} from './modals-form/save/save.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
