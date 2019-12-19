@@ -32,7 +32,6 @@ export class LabyrinthComponent implements OnInit {
   }
 
   getComponent(i: number, j: number) {
-    debugger;
     switch (this.labyrinthService.labyrinth.pattern[i][j]) {
       case MazeComponent.Entry: return 'Entry';
       case MazeComponent.Exit: return 'Exit';

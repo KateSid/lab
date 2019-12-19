@@ -61,7 +61,9 @@ export class LabyrinthService {
       this.labyrinth.hero = data.hero;
     });
   }
-
+  public sendLab() {
+    this.httpService.postLab(this.labyrinth).subscribe();
+  }
   async getLabyrinthWay(url: string) {
     if (!this.isDraw) {
       this.isDraw = true;
@@ -140,7 +142,7 @@ export class LabyrinthService {
         case MazeComponent.Wall:
           if (row !== 0 && row !== this.labyrinth.width
             && x !== 0 && x !== this.labyrinth.height) {
-            this.labyrinth.pattern[row][x] = this.currentComponent;
+            this.labyrinth.pattern[row][x] = Number(this.currentComponent);
           }
 
           break;
@@ -171,24 +173,24 @@ export class LabyrinthService {
   }
 
   public CheckElementSet(i: number, j: number) {
-    return (this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j] // правый нижний квадрат
-      && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j + 1]
-      && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j + 1])
+    return (this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i + 1][j] // правый нижний квадрат
+      && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i][j + 1]
+      && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i + 1][j + 1])
 
-      || (this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i - 1][j] // левый верхний квадрат
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j - 1]
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i - 1][j - 1])
+      || (this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i - 1][j] // левый верхний квадрат
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i][j - 1]
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i - 1][j - 1])
 
-      || (this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i - 1][j] // правый верхний квадрат
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j + 1]
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i - 1][j + 1])
+      || (this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i - 1][j] // правый верхний квадрат
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i][j + 1]
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i - 1][j + 1])
 
-      || (this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j] // левый нижний квадрат
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i][j - 1]
-        && this.labyrinth.pattern[i][j] == this.labyrinth.pattern[i + 1][j - 1]);
+      || (this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i + 1][j] // левый нижний квадрат
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i][j - 1]
+        && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i + 1][j - 1]);
   }
 
-  public ExcelentStruct(c: boolean) {
+  public ExcelentStruct (c: boolean) {
     for (let i = 1; i < this.labyrinth.height - 1; i++) {
       for (let j = 1; j < this.labyrinth.width - 1; j++) {
         if (this.CheckElementSet(i, j)) {

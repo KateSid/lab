@@ -28,13 +28,14 @@ export class GenerateLabComponent implements OnInit {
         console.log(error);
         return;
       }
+      this.labyrinthService.sendLab();
+      this.router.navigate(['find']);
+    } else {
+      await this.labyrinthService.getLabyrinthStruct(this.url);
+
+      this.router.navigate(['find']);
     }
-
-    await this.labyrinthService.getLabyrinthStruct(this.url);
-
-    this.router.navigate(['find']);
-
-  }
+}
 
   ngOnInit() {
     this.labyrinthService.getLabyrinthPattern();

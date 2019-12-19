@@ -22,6 +22,10 @@ export class LoadComponent implements OnInit {
   loadLabirynth() {
     this.labyrinthService.loadLabyrinth(this.name);
     this.labyrinthService.getLabyrinthPattern();
-    this.router.navigate(['find']);
+    if (this.labyrinthService.labyrinth.width === 0 || this.labyrinthService.labyrinth.height === 0) {
+      alert('Файл поврежден!');
+    } else {
+      this.router.navigate(['find']);
+    }
   }
 }

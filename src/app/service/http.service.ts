@@ -13,7 +13,9 @@ export class HttpService {
     const body = {height: labyrinth.height, width: labyrinth.width, theme: labyrinth.theme};
     return this.http.post(this.urlServer + 'init', body);
   }
-
+  postLab(labyrinth: Labyrinth) { const body = {height: labyrinth.height, width: labyrinth.width, theme: labyrinth.theme, pattern: labyrinth.pattern, start: labyrinth.start, stop: labyrinth.stop};
+                                  return this.http.post(this.urlServer + 'hand', body);
+  }
   getData(url: string) {
     return this.http.get(this.urlServer + url);
   }
