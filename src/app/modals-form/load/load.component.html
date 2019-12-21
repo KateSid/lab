@@ -1,15 +1,17 @@
-<label>Загрузка лабиринта</label>
-<div class="input-group">
-  <label>Лабиринты</label>
+
+<fieldset>
+  <label>Загрузка лабиринта</label>
   <div class="input-group">
-    <select class="custom-select" [(ngModel)]="this.name">
-      <ng-container *ngFor="let el of this.labyrinthService.labFilse">
-        <option [ngValue]=el>{{el}}</option>
-      </ng-container>
-    </select>
+    <p><label>Лабиринты</label></p>
+    <div class="input-group">
+      <select class="custom-select" [(ngModel)]="this.name"(click)="loadLabirynth()">
+        <ng-container *ngFor="let el of this.labyrinthService.labFilse">
+          <option [ngValue]=el>{{el}}</option>
+        </ng-container>
+      </select>
+    </div>
   </div>
-</div>
-<!--<select multiple *ngFor="let file of this.labyrinthService.labFilse">
-  <option value="file">{{file}}</option>
-</select>-->
-<button (click)="loadLabirynth()">Загрузить</button>
+  <p><button class="btn btn-outline-primary" (click)="next()" style="position: relative;
+top: 20px">Загрузить</button></p>
+
+</fieldset>

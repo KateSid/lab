@@ -1,6 +1,9 @@
 .alert {
   padding: 20px;
-  background-color: #eef4af;
+  background-color: #003ff4;
   color: white;
   width: 300px;
+}
+form {
+  width: 250px;
 }

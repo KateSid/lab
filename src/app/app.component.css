@@ -2,4 +2,11 @@ button {
   width: 180px;
   margin-right: 40px;
 }
+.navbar-brand {
+  cursor: pointer;
+}
 
+a:hover {
+  color: #54aef4; /* Цвет ссылки при наведении на нее курсора мыши */
+  text-decoration: underline; /* Добавляем подчеркивание */
+}

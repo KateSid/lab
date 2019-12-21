@@ -2,15 +2,14 @@ import {EventEmitter, Inject, Injectable} from '@angular/core';
 import {Labyrinth} from '../model/labyrinth';
 import {HttpService} from './http.service';
 import {Cell} from '../model/Cell';
-import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Injectable()
 export class LabyrinthService {
   public labyrinth: Labyrinth;
-  private cellsWay: Cell[];
+  public cellsWay: Cell[];
   private errorCells: Cell[] = [];
   public saveready: boolean;
-  private isDraw: boolean;
+  public isDraw: boolean;
   public eventEndDrawWay: EventEmitter<boolean> = new EventEmitter<boolean>();
   speed = 1;
   currentComponent = 1;
@@ -58,7 +57,6 @@ export class LabyrinthService {
       this.labyrinth.width = data.width;
       this.labyrinth.height = data.height;
       this.labyrinth.theme = data.theme;
-      this.labyrinth.hero = data.hero;
     });
   }
   public sendLab() {
@@ -166,9 +164,14 @@ export class LabyrinthService {
     });
   }
 
-  public loadLabyrinth(name: string) {
-    this.httpService.loadLabyrinth(name).subscribe((data: string) => {
-      name = data;
+  public async loadLabyrinth(name: string) {
+    this.httpService.loadLabyrinth(name).subscribe((data: Labyrinth) => {
+      this.labyrinth.start = data.start;
+      this.labyrinth.stop = data.stop;
+      this.labyrinth.pattern = data.pattern;
+      this.labyrinth.width = data.width;
+      this.labyrinth.height = data.height;
+      this.labyrinth.theme = data.theme;
     });
   }
 

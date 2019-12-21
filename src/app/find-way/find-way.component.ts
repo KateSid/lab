@@ -24,7 +24,6 @@ export class FindWayComponent implements OnInit {
     this.labyrinthService.eventEndDrawWay.subscribe((el) => {
       this.buttonFind.nativeElement.disabled = false;
     });
-    debugger;
     this.labyrinthService.saveready = true;
 
 

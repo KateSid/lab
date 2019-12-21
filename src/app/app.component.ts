@@ -8,6 +8,7 @@ import {LabyrinthService} from './service/labyrinth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  url: string;
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
   }
   init() {
@@ -18,5 +19,9 @@ export class AppComponent {
   }
   saveLab() {
     this.router.navigate(['save']);
+  }
+  info() {
+    this.url = window.location.href;
+    alert('Пиздец блять, а не фронт');
   }
 }

@@ -16,16 +16,35 @@ export class LoadComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.labyrinthService.cellsWay = undefined;
+    this.labyrinthService.isDraw = false;
+    this.labyrinthService.saveready = false;
+    this.labyrinthService.labyrinth.width = 31;
+    this.labyrinthService.labyrinth.height = 31;
+    this.labyrinthService.labyrinth.theme = 1;
+    this.labyrinthService.labyrinth.pattern = undefined;
     this.labyrinthService.loadLabirynths();
+    this.name = '';
   }
 
   loadLabirynth() {
     this.labyrinthService.loadLabyrinth(this.name);
-    this.labyrinthService.getLabyrinthPattern();
-    if (this.labyrinthService.labyrinth.width === 0 || this.labyrinthService.labyrinth.height === 0) {
+  }
+  next() {
+    if (this.labyrinthService.labyrinth.width === 0 || this.labyrinthService.labyrinth.height === 0 ||
+      this.labyrinthService.labyrinth.pattern === undefined || this.name === '') {
       alert('Файл поврежден!');
+      this.router.navigate(['load']);
     } else {
-      this.router.navigate(['find']);
+      let a = 0;
+      for (let i = 1; i < this.labyrinthService.labyrinth.height - 1; i++) {
+        for (let j = 1; j < this.labyrinthService.labyrinth.width - 1; j++) {
+          a += this.labyrinthService.labyrinth.pattern[i][j];
+        }
+      }
+      if (a === 0) {
+        alert('Файл поврежден!');
+      } else { this.router.navigate(['find']); }
     }
   }
 }

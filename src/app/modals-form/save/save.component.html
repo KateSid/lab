@@ -1,7 +1,11 @@
-<p><label>Введите название лабиринта</label></p>
-<p><input type="text" [(ngModel)]="this.name"/></p>
-<p><button (click)="saveSend()">Сохранить</button></p>
-<div class="alert" [hidden]="!this.saveCompplete">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  Сохранение успешно завершено!
-</div>
+
+  <fieldset>
+    <p><label>Введите название лабиринта</label></p>
+    <p><input type="text" [(ngModel)]="this.name"/></p>
+    <p><button (click)="saveSend()">Сохранить</button></p>
+    <div class="alert" [hidden]="!this.saveCompplete">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      Сохранение успешно завершено!
+    </div>
+  </fieldset>
+

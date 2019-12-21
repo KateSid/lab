@@ -4,9 +4,9 @@
 
     <p>
       <label>Длина</label>
-      <input type="number" class="form-control" name="height" min="7" max="31" step="2"
+      <input type="number" class="form-control" name="height" min="7" max="31" step="2" onkeypress="return false"
              [(ngModel)]="this.labyrinthService.labyrinth.height"/></p>
-    <p><label>Ширина</label><input type="number" class="form-control" name="width" min="7" max="31" step="2"
+    <p><label>Ширина</label><input type="number" class="form-control" name="width" min="7" max="31" step="2" onkeypress="return false"
                                    [(ngModel)]="this.labyrinthService.labyrinth.width"/></p>
     <p><label>Тема</label>
       <select class="form-control custom-select" name="theme" [(ngModel)]="this.labyrinthService.labyrinth.theme">

@@ -20,13 +20,20 @@ export class InitLabComponent implements OnInit {
 
   ngOnInit() {
     this.labyrinthService.saveready = false;
+    this.labyrinthService.labyrinth.width = 31;
+    this.labyrinthService.labyrinth.height = 31;
+    this.labyrinthService.labyrinth.theme = 1;
+    this.labyrinthService.labyrinth.pattern = undefined;
   }
 
   setParameter() {
-    if (this.labyrinthService.labyrinth.width % 2 == 0) {
-
+    if (this.labyrinthService.labyrinth.width % 2 === 0 || this.labyrinthService.labyrinth.height % 2 === 0 ||
+      this.labyrinthService.labyrinth.width < 7 || this.labyrinthService.labyrinth.width > 31 ||
+      this.labyrinthService.labyrinth.height < 7 || this.labyrinthService.labyrinth.height > 31) {
+    alert('Укажите нечетную длину в диапозоне 7 - 31!');
+    } else {
+      this.labyrinthService.setParameterLabyrinth();
+      this.router.navigate(['generate']);
     }
-    this.labyrinthService.setParameterLabyrinth();
-    this.router.navigate(['generate']);
   }
 }
