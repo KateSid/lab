@@ -5,7 +5,10 @@ button {
 .navbar-brand {
   cursor: pointer;
 }
-
+a {
+  font-size: 11pt;
+  line-height: 0.9em;
+}
 a:hover {
   color: #54aef4; /* Цвет ссылки при наведении на нее курсора мыши */
   text-decoration: underline; /* Добавляем подчеркивание */

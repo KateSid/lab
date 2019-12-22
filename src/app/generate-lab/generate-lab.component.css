@@ -1,9 +1,11 @@
 form {
   width: 250px;
 }
+fieldset{
+  width: 220px;
+}
 img {
   margin-bottom: -6px;
   padding: 0px;
 }
-
 

@@ -5,6 +5,9 @@ img {
   margin-bottom: -6px;
   padding: 0px;
 }
+fieldset{
+  width: 220px;
+}
 .tumb {
   width: 170px;
 }

@@ -1,7 +1,188 @@
-<head>
-  <meta charset="utf-8">
-  <title>Lab</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<p><strong>Игра "Лабиринт". Выполнили студентки группы 6402-090301D</strong></p><p><strong>Сидорова Е.В.</strong></p><p><strong>Воронова В.Г.</strong></p><p><strong>Содержание</strong></p><ol><li><span style="color: #000000;"><em>Назначение системы</em></span></li><li><span style="color: #000000;"><em>Условия работы системы</em></span><ol><li><span style="color: #000000;"><em>Требования к техническому обеспечению</em></span></li><li><span style="color: #000000;"><em>Требования к программному обеспечению</em></span></li></ol></li><li><span style="color: #000000;"><em>Установка системы</em></span></li><li><span style="color: #000000;"><em>Работа с системой</em></span><ol><li><span style="color: #000000;"><em>Настройка параметров генирации лабиринта</em></span></li><li><span style="color: #000000;"><em>Настройка способов расстановки</em></span></li><li><span style="color: #000000;"><em>Настройка способов поиска пути</em></span></li><li><span style="color: #000000;"><em>Сохранение и загрузка лабиринта</em></span></li></ol></li></ol><p>1. Назначение системы</p><p>Система &laquo;Лабиринт&raquo; предназначена для генерации лабиринтов по различным алгоритмам, ознакомления с классическими алгоритмами поиска пути.</p><p>2. Условия работы системы</p><p>Для корректной работы системы необходимо наличие соответствующих программных и аппаратных средств.</p><p>1. Требования к техническому обеспечению:</p><ul><li>ЭВМ типа IBM PC;</li><li>процессор типа x86 или x64 тактовой частоты 1 МГц и выше;</li><li>разрешение монитора &ndash; 1360х768;</li><li>клавиатура;</li><li>мышь.</li><li></li></ul><p>2.&nbsp; Требования к программному обеспечению:</p><ul><li>операционная система Windows 10;</li><li>установленная платформа Java 8 и выше;</li><li>объем оперативной памяти &ndash; не менее 3 Гб;</li><li>установленный фреймворк Angular версии 8;</li><li>свободное место на диске &ndash; не менее 60 Мб.</li></ul><p>3 Установка системы</p><p>Система поставляется в виде zip-архива. Данный файл необходимо распаковать в любую директорию на жестком диске. Запускаемыми файлами системы являются файлы Maze.jar и MazeClient.jar.</p><p>4. Работа с системой</p><p>1 Настройка параметров генерации</p><p>Для того чтобы сгенерировать лабиринт, необходимо задать параметры в группе элементов &laquo;Параметры&raquo;: длину лабиринта (можно выбрать только нечётные значение в диапазоне от 7 до 31) и ширину лабиринта (можно выбрать только нечётные значения от 7 до 31). Тему лабиринта можно выбрать из выпадающего списка. В системе реализовано 4 темы, соответствующих стихиям. При нажатии на кнопку &laquo;Принять&raquo; сгенерируется периметр лабиринта и откроется новая группа элементов &laquo;Создание лабиринта&raquo;.</p><p>2 Настройка способов расстановки</p><p>В группе элементов &laquo;Создание лабиринта&raquo; есть возможность выбора способа расстановки: ручной или автоматический: &laquo;Крота&raquo; или &laquo;Бэктрекинга&raquo;.</p><p>Рисунок А.3 &ndash; Сгенерированный периметр лабиринта</p><p>При выборе автоматической расстановки необходимо нажать кнопку &laquo;Принять&raquo;. После нажатия кнопки на периметре лабиринта появится сгенерированный выбранным алгоритмом лабиринт, группа элементов &laquo;Создание лабиринта&raquo; исчезнет. Группа элементов &laquo;Поиск пути&raquo; станет доступна для выбора.</p><p>Рисунок А.4 &ndash; Автоматическая генерация</p><p>При выборе ручного способа расстановки элементов кнопка появится новая группа элементов &laquo;Компоненты&raquo;, из которой можно выбрать необходимый компонент и поставить в соответствии с правилами расстановки. После расстановки компонентов необходимо нажать кнопку &laquo;Принять&raquo;. Если компоненты установлены, то группа элементов &laquo;Создание лабиринта&raquo; исчезнет, а группа элементов &laquo;Поиск пути&raquo; станет доступна для выбора.</p><p>3 Настройка способов поиска пути</p><p>В группе элементов &laquo;Поиск пути&raquo; можно выбрать один из алгоритмов прохождения &laquo;Волновой&raquo; или &laquo;Правой руки&raquo; и скорость прохождения при помощи ползунка, где самое левое положение &ndash; это медленно, а крайнее правое &ndash; это быстрое построение лабиринта. После выбора алгоритма поиска и установки скорости прохождения необходимо нажать на кнопку &laquo;Принять&raquo;. После чего начнётся анимация прохождения лабиринта.</p><p>4 Сохранение и загрузка лабиринта</p><p>После генерации лабиринта станет доступно сохранение лабиринта в файл. Для того чтобы сохранить лабиринт, необходимо нажать на кнопку &laquo;Сохранить лабиринт&raquo;.Для того чтобы загрузить лабиринт, необходимо нажать на кнопку &laquo;Загрузить лабиринт&raquo;. После этого откроется окно со списком лабиринтов где можно загрузить понравившийся лабиринт, нажав кнопку &laquo;Выбрать&raquo;.</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.6.2 (Linux)">
+	<META NAME="AUTHOR" CONTENT="ShadWhite">
+	<META NAME="CREATED" CONTENT="20191222;110800000000000">
+	<META NAME="CHANGEDBY" CONTENT="ShadWhite">
+	<META NAME="CHANGED" CONTENT="20191222;123200000000000">
+	<META NAME="AppVersion" CONTENT="16.0000">
+	<META NAME="DocSecurity" CONTENT="0">
+	<META NAME="HyperlinksChanged" CONTENT="false">
+	<META NAME="LinksUpToDate" CONTENT="false">
+	<META NAME="ScaleCrop" CONTENT="false">
+	<META NAME="ShareDoc" CONTENT="false">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 1.18in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.79in }
+		P { margin-bottom: 0.08in; direction: ltr; widows: 2; orphans: 2 }
+		A:link { color: #0563c1; so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="ru-RU" LINK="#0563c1" DIR="LTR">
+<P LANG="en-GB" ALIGN=CENTER STYLE="margin-left: 0.49in; margin-top: 0.17in; margin-bottom: 0.17in; line-height: 150%"><A NAME="_top"></A>
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><FONT SIZE=4 STYLE="font-size: 16pt"><SPAN LANG="ru-RU"><B>Руководство
+пользователя</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Содержание</B><SPAN LANG="en-US"><B>:</B></SPAN></FONT></FONT></P>
+<OL>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%">
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><A HREF="#генерация"><SPAN LANG="ru-RU">Настройка
+	параметров генерации</SPAN></A></FONT></FONT></P>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%">
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><A HREF="HYPERLINK#расстановка"><SPAN LANG="ru-RU">Настройка
+	способов расстановки</SPAN></A></FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><A HREF="#поискпути">Настройка
+	способов поиска пути</A></FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><A HREF="HYPERLINK#сохранение">Сохранение
+	лабиринта</A></FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><A HREF="HYPERLINK#загрузка">Загрузка
+	лабиринта</A></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><BR>
+</P>
+<OL>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0.17in; line-height: 150%"><A class="#генерация"></A>
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="ru-RU">Настройка
+	параметров генерации</SPAN></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Для того
+чтобы сгенерировать лабиринт, необходимо
+задать параметры в группе элементов
+«Параметры» (рисунок 1): длину лабиринта
+(можно выбрать только нечётные значение
+в диапазоне от 7 до 31) и ширину лабиринта
+(можно выбрать только нечётные значения
+от 7 до 31). Тему лабиринта можно выбрать
+из выпадающего списка. В системе
+реализовано 4 темы, соответствующих
+стихиям (рисунок 2). При нажатии на кнопку
+«Принять» сгенерируется периметр
+лабиринта и откроется новая группа
+элементов «Создание лабиринта» (рисунок
+3).</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><IMG SRC="param.jpg" NAME="Рисунок 6" ALIGN=BOTTOM WIDTH=160 HEIGHT=244 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок<SPAN LANG="en-US">
+</SPAN>1 – Группа элементов «Параметры»</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><IMG SRC="theme.png" NAME="Рисунок 1" ALIGN=BOTTOM WIDTH=217 HEIGHT=146 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок<SPAN LANG="en-US">
+</SPAN>2 – Список тем</FONT></FONT></P>
+<OL START=2>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0.17in; line-height: 150%"><A NAME="расстановка"></A>
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="ru-RU">Настройка
+	способов расстановки</SPAN></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>В группе
+элементов «Создание лабиринта» есть
+возможность выбора способа расстановки:
+ручной или автоматический: «Крота» или
+«Бэктрекинга». </FONT></FONT>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><IMG SRC="perim.jpg" NAME="Рисунок 63" ALIGN=BOTTOM WIDTH=586 HEIGHT=336 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+3 – Сгенерированный периметр лабиринта</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>При выборе
+автоматической расстановки необходимо
+нажать кнопку «Принять». После нажатия
+кнопки на периметре лабиринта появится
+сгенерированный выбранным алгоритмом
+лабиринт, группа элементов «Создание
+лабиринта» исчезнет. Группа элементов
+«Поиск пути» станет доступна для выбора
+(рисунок А.4).</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<IMG SRC=auto.jpg" NAME="Рисунок 64" ALIGN=BOTTOM WIDTH=373 HEIGHT=332 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+4 – Автоматическая генерация</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>При выборе
+ручного способа расстановки элементов
+кнопка появится новая группа элементов
+«Компоненты» (рисунок А.5), из которой
+можно выбрать необходимый компонент и
+поставить в соответствии с правилами
+расстановки. После расстановки компонентов
+необходимо нажать кнопку «Принять».
+Если компоненты установлены, то группа
+элементов «Создание лабиринта» исчезнет,
+а группа элементов «Поиск пути» станет
+доступна для выбора (рисунок А.6).</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%"><IMG SRC="hand.jpg" NAME="Рисунок 65" ALIGN=BOTTOM WIDTH=173 HEIGHT=157 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+А.5 – Группа элементов «Компоненты» </FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%"><IMG SRC="hand.jpg" NAME="Рисунок 67" ALIGN=BOTTOM WIDTH=460 HEIGHT=366 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+6 – Ручное составление лабиринта</FONT></FONT></P>
+<OL START=3>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0.17in; line-height: 150%"><A name="поискпути"></A>
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="ru-RU">Настройка
+	способов поиска пути</SPAN></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>В группе
+элементов «Поиск пути» можно выбрать
+один из алгоритмов прохождения «Волновой»
+или «Правой руки» и скорость прохождения
+при помощи ползунка, где самое левое
+положение – это медленно, а крайнее
+правое – это быстрое построение лабиринта
+(рисунок А.7). После выбора алгоритма
+поиска и установки скорости прохождения
+необходимо нажать на кнопку «Принять».
+После чего начнётся анимация прохождения
+лабиринта (рисунок А.8).</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%"><IMG SRC="7caff29c3ce2ec9a3011f58ad67461e7_html_9095dff4.jpg" NAME="Рисунок 71" ALIGN=BOTTOM WIDTH=150 HEIGHT=210 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+7 – Группа элементов «Поиск пути»</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><IMG SRC="7caff29c3ce2ec9a3011f58ad67461e7_html_675ba6b9.jpg" NAME="Рисунок 72" ALIGN=BOTTOM WIDTH=563 HEIGHT=360 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+8 – Пройденный лабиринт</FONT></FONT></P>
+<OL START=4>
+	<LI><P LANG="en-GB" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0.17in; line-height: 150%"><A NAME="сохранение"></A>
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="ru-RU">Сохранение
+	лабиринта</SPAN></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>После генерации
+лабиринта станет доступно сохранение
+лабиринта в файл. Для того чтобы сохранить
+лабиринт, необходимо нажать на кнопку
+«Сохранить лабиринт» (рисунок А.9).</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%"><IMG SRC="7caff29c3ce2ec9a3011f58ad67461e7_html_29b0909a.jpg" NAME="Рисунок 73" ALIGN=BOTTOM WIDTH=197 HEIGHT=154 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+9 – Сохранение лабиринта</FONT></FONT></P>
+<OL START=5>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 150%"><A NAME="_GoBack"></A><A NAME="загрузка"></A>
+	<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Загрузка
+	лабиринта</FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Для того
+чтобы загрузить лабиринт, необходимо
+нажать на кнопку «Загрузить лабиринт».
+После этого откроется окно со списком
+лабиринтов (рисунок А.10), загрузить
+понравившийся лабиринт, нажав кнопку
+«Загрузить».</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 150%"><IMG SRC="load.jpg" NAME="Рисунок 74" ALIGN=BOTTOM WIDTH=230 HEIGHT=245 BORDER=0></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0.17in; line-height: 150%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рисунок
+10 – Окно списка лабиринтов</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 150%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>После загрузки
+лабиринта можно искать в нём путь либо
+редактировать его структуру. После
+редактирования можно сохранить лабиринт
+как новый, для этого необходимо нажать
+кнопку «Сохранить лабиринт».</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+</BODY>
+</HTML>

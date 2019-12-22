@@ -1,10 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 form {
   width: 200px;
-  border-style: double;
+  border-style: ridge;
+  color: #0064d6;
   margin:20px;
 }
-
+text{
+  color: #0064d6;
+}
+legend{
+  color: #0064d6;
+}
+label{
+  color: #0064d6;
+}
 fieldset{
   margin: 20px;
 }
