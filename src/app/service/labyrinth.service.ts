@@ -122,7 +122,8 @@ export class LabyrinthService {
               this.labyrinth.setStartPosition(row, x);
               this.setimg(x, row, MazeComponent.Entry);
             } else if ((this.labyrinth.start.y !== 0 && this.labyrinth.start.y !== this.labyrinth.height - 1
-              && this.labyrinth.start.x !== 0 && this.labyrinth.start.x !== this.labyrinth.width - 1)) {
+              && this.labyrinth.start.x !== 0 && this.labyrinth.start.x !== this.labyrinth.width - 1) ||
+              (this.labyrinth.start.y > this.labyrinth.height - 1 || this.labyrinth.start.x > this.labyrinth.width - 1)) {
               this.labyrinth.setStartPosition(row, x);
               this.setimg(x, row, MazeComponent.Entry);
             } else {
@@ -142,8 +143,9 @@ export class LabyrinthService {
               this.labyrinth.stop = new  Cell();
               this.labyrinth.setStopPosition(row, x);
               this.setimg(x, row, MazeComponent.Exit);
-            } else if ((this.labyrinth.stop.y !== 0 && this.labyrinth.stop.y !== this.labyrinth.height - 1
-              && this.labyrinth.stop.x !== 0 && this.labyrinth.stop.x !== this.labyrinth.width - 1)) {
+            } else if (((this.labyrinth.stop.y !== 0 && this.labyrinth.stop.y !== this.labyrinth.height - 1
+              && this.labyrinth.stop.x !== 0 && this.labyrinth.stop.x !== this.labyrinth.width - 1) ||
+              (this.labyrinth.stop.y > this.labyrinth.height - 1 || this.labyrinth.stop.x > this.labyrinth.width - 1))) {
               this.labyrinth.setStopPosition(row, x);
               this.setimg(x, row, MazeComponent.Exit);
             } else {
