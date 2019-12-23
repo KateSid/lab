@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpService} from '../service/http.service';
 import {LabyrinthService} from '../service/labyrinth.service';
+import {Cell} from "../model/Cell";
 
 @Component({
   selector: 'app-generate-lab',
@@ -14,6 +15,9 @@ export class GenerateLabComponent implements OnInit {
   url = 'molegenerate';
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
+    this.labyrinthService.labyrinth.start = new Cell(0, 0);
+    this.labyrinthService.labyrinth.stop = new Cell(0, 0);
+    this.labyrinthService.errorCells = [];
   }
 
   falseManual() {
@@ -21,7 +25,7 @@ export class GenerateLabComponent implements OnInit {
   }
 
   async createLabyrinth() {
-    if (this.url == 'hand') {
+    if (this.url === 'hand') {
       const error = this.labyrinthService.ExcelentStruct(this.labyrinthService.isManualEdit);
       if (error.length !== 0) {
         alert("Ошибка структуры");

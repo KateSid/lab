@@ -7,7 +7,7 @@ import {Cell} from '../model/Cell';
 export class LabyrinthService {
   public labyrinth: Labyrinth;
   public cellsWay: Cell[];
-  private errorCells: Cell[] = [];
+  public errorCells: Cell[] = [];
   public saveready: boolean;
   public isDraw: boolean;
   public eventEndDrawWay: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -138,11 +138,10 @@ export class LabyrinthService {
 
         case MazeComponent.Pass:
         case MazeComponent.Wall:
-          if (row !== 0 && row !== this.labyrinth.width
-            && x !== 0 && x !== this.labyrinth.height) {
-            this.labyrinth.pattern[row][x] = Number(this.currentComponent);
+          if ((row !== 0 && row !== this.labyrinth.width - 1
+            && x !== 0 && x !== this.labyrinth.height - 1) ) {
+              this.labyrinth.pattern[row][x] = Number(this.currentComponent);
           }
-
           break;
 
         default:
@@ -193,7 +192,8 @@ export class LabyrinthService {
         && this.labyrinth.pattern[i][j] === this.labyrinth.pattern[i + 1][j - 1]);
   }
 
-  public ExcelentStruct (c: boolean) {
+  public ExcelentStruct(c: boolean) {
+    this.errorCells = [];
     for (let i = 1; i < this.labyrinth.height - 1; i++) {
       for (let j = 1; j < this.labyrinth.width - 1; j++) {
         if (this.CheckElementSet(i, j)) {
@@ -201,8 +201,6 @@ export class LabyrinthService {
         }
       }
     }
-    // FindCycle(errorListPoints);
-
     return this.errorCells;
   }
 
@@ -214,9 +212,9 @@ export class LabyrinthService {
         || (x === this.labyrinth.width - 1 && y === 0)
         || (x === this.labyrinth.width - 1 && y === this.labyrinth.height - 1))
       && (((x === 0 || x === this.labyrinth.width - 1) && y % 2 === 1)
-        || ((y === 0 || y === this.labyrinth.height - 1) && x % 2 === 1))
-      && !(x === this.labyrinth.start.x && y === this.labyrinth.start.y)
-      && !(x === this.labyrinth.stop.x && y === this.labyrinth.stop.y);
+        || ((y === 0 || y === this.labyrinth.height - 1) && x % 2 === 1));
+     // && !(x === this.labyrinth.start.x && y === this.labyrinth.start.y)
+   //   && !(x === this.labyrinth.stop.x && y === this.labyrinth.stop.y);
 
 
   }
