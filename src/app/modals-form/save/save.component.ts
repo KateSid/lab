@@ -14,6 +14,7 @@ export class SaveComponent implements OnInit {
   saveCompplete: boolean;
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) { }
   ngOnInit() {
+    document.getElementById('zastavka').style.display = 'none';
     this.saveCompplete = false;
   }
   saveSend() {

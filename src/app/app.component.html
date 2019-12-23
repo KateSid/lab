@@ -10,7 +10,9 @@
   <p><button class="btn btn-outline-primary" (click)="init()">Новый лабиринт</button></p>
   <p><button class="btn btn-outline-primary" (click)="loadLab()">Загрузить Лабиринт</button></p>
   <p><button class="btn btn-outline-primary" (click)="saveLab()" [hidden]="!this.labyrinthService.saveready">Сохранить лабиринт</button></p>
-
+  <div id="zastavka" style="left: 400px; top: 50px; position: fixed" >
+    <img src ="../../assets/file/mozg.jpg" width="600" height="600">
+  </div>
 </div>
 
 

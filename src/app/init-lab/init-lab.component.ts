@@ -32,6 +32,7 @@ export class InitLabComponent implements OnInit {
       this.labyrinthService.labyrinth.height < 7 || this.labyrinthService.labyrinth.height > 31) {
     alert('Укажите нечетную длину в диапозоне 7 - 31!');
     } else {
+      document.getElementById('zastavka').style.display = "none";
       this.labyrinthService.setParameterLabyrinth();
       this.router.navigate(['generate']);
     }

@@ -16,6 +16,7 @@ export class LoadComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('zastavka').style.display = 'none';
     this.labyrinthService.cellsWay = undefined;
     this.labyrinthService.isDraw = false;
     this.labyrinthService.saveready = false;
@@ -45,6 +46,7 @@ export class LoadComponent implements OnInit {
       if (a === 0) {
         alert('Файл поврежден!');
       } else { this.router.navigate(['find']); }
+
     }
   }
 }
