@@ -117,22 +117,42 @@ export class LabyrinthService {
       switch (Number(this.currentComponent) as MazeComponent) {
         case MazeComponent.Entry:
           if (this.checkDiagonal(row, x)) {
-            const entry = this.labyrinth.start;
-            this.setimg(entry.x, entry.y, MazeComponent.Wall);
+            if (this.labyrinth.start === null || this.labyrinth.start === undefined) {
+              this.labyrinth.start = new  Cell();
+              this.labyrinth.setStartPosition(row, x);
+              this.setimg(x, row, MazeComponent.Entry);
+            } else if ((this.labyrinth.start.y !== 0 && this.labyrinth.start.y !== this.labyrinth.width - 1
+              && this.labyrinth.start.x !== 0 && this.labyrinth.start.x !== this.labyrinth.height - 1)) {
+              this.labyrinth.setStartPosition(row, x);
+              this.setimg(x, row, MazeComponent.Entry);
+            } else {
+              const entry = this.labyrinth.start;
+              this.setimg(entry.x, entry.y, MazeComponent.Wall);
+              this.labyrinth.setStartPosition(row, x);
+              this.setimg(x, row, MazeComponent.Entry);
+            }
 
-            this.labyrinth.setStartPosition(row, x);
-            this.setimg(x, row, MazeComponent.Entry);
           }
 
           break;
 
         case MazeComponent.Exit:
           if (this.checkDiagonal(row, x)) {
-            const exit = this.labyrinth.stop;
-            this.setimg(exit.x, exit.y, MazeComponent.Wall);
+            if (this.labyrinth.stop === null || this.labyrinth.stop === undefined) {
+              this.labyrinth.stop = new  Cell();
+              this.labyrinth.setStopPosition(row, x);
+              this.setimg(x, row, MazeComponent.Exit);
+            } else if ((this.labyrinth.stop.y !== 0 && this.labyrinth.stop.y !== this.labyrinth.width - 1
+              && this.labyrinth.stop.x !== 0 && this.labyrinth.stop.x !== this.labyrinth.height - 1)) {
+              this.labyrinth.setStopPosition(row, x);
+              this.setimg(x, row, MazeComponent.Exit);
+            } else {
+              const exit = this.labyrinth.stop;
+              this.setimg(exit.x, exit.y, MazeComponent.Wall);
 
-            this.labyrinth.setStopPosition(row, x);
-            this.setimg(x, row, MazeComponent.Exit);
+              this.labyrinth.setStopPosition(row, x);
+              this.setimg(x, row, MazeComponent.Exit);
+            }
           }
           break;
 

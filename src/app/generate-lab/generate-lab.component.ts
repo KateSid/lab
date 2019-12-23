@@ -15,8 +15,8 @@ export class GenerateLabComponent implements OnInit {
   url = 'molegenerate';
 
   constructor(private router: Router, @Inject(LabyrinthService) private labyrinthService: LabyrinthService) {
-    this.labyrinthService.labyrinth.start = new Cell(0, 0);
-    this.labyrinthService.labyrinth.stop = new Cell(0, 0);
+    this.labyrinthService.labyrinth.start = new Cell();
+    this.labyrinthService.labyrinth.stop = new Cell();
     this.labyrinthService.errorCells = [];
   }
 
@@ -43,7 +43,8 @@ export class GenerateLabComponent implements OnInit {
 
   ngOnInit() {
     this.labyrinthService.getLabyrinthPattern();
-
+    this.labyrinthService.labyrinth.start = new Cell();
+    this.labyrinthService.labyrinth.stop = new Cell();
   }
 
 }
