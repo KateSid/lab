@@ -121,8 +121,8 @@ export class LabyrinthService {
               this.labyrinth.start = new  Cell();
               this.labyrinth.setStartPosition(row, x);
               this.setimg(x, row, MazeComponent.Entry);
-            } else if ((this.labyrinth.start.y !== 0 && this.labyrinth.start.y !== this.labyrinth.width - 1
-              && this.labyrinth.start.x !== 0 && this.labyrinth.start.x !== this.labyrinth.height - 1)) {
+            } else if ((this.labyrinth.start.y !== 0 && this.labyrinth.start.y !== this.labyrinth.height - 1
+              && this.labyrinth.start.x !== 0 && this.labyrinth.start.x !== this.labyrinth.width - 1)) {
               this.labyrinth.setStartPosition(row, x);
               this.setimg(x, row, MazeComponent.Entry);
             } else {
@@ -142,8 +142,8 @@ export class LabyrinthService {
               this.labyrinth.stop = new  Cell();
               this.labyrinth.setStopPosition(row, x);
               this.setimg(x, row, MazeComponent.Exit);
-            } else if ((this.labyrinth.stop.y !== 0 && this.labyrinth.stop.y !== this.labyrinth.width - 1
-              && this.labyrinth.stop.x !== 0 && this.labyrinth.stop.x !== this.labyrinth.height - 1)) {
+            } else if ((this.labyrinth.stop.y !== 0 && this.labyrinth.stop.y !== this.labyrinth.height - 1
+              && this.labyrinth.stop.x !== 0 && this.labyrinth.stop.x !== this.labyrinth.width - 1)) {
               this.labyrinth.setStopPosition(row, x);
               this.setimg(x, row, MazeComponent.Exit);
             } else {
@@ -158,8 +158,8 @@ export class LabyrinthService {
 
         case MazeComponent.Pass:
         case MazeComponent.Wall:
-          if ((row !== 0 && row !== this.labyrinth.width - 1
-            && x !== 0 && x !== this.labyrinth.height - 1) ) {
+          if ((row !== 0 && row !== this.labyrinth.height - 1
+            && x !== 0 && x !== this.labyrinth.width - 1) ) {
               this.labyrinth.pattern[row][x] = Number(this.currentComponent);
           }
           break;
